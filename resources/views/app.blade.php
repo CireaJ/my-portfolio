@@ -11,7 +11,7 @@
       window.addEventListener('beforeunload', function() {
         window.scrollTo(0, 0);
       });
-      
+
       if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
       }
@@ -498,24 +498,24 @@
       // AJAX Contact Form Submission
       document.getElementById('contact-form').addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         const submitBtn = document.getElementById('submit-btn');
         const originalText = submitBtn.textContent;
         const successMessage = document.getElementById('success-message');
         const errorMessage = document.getElementById('error-message');
         const errorList = document.getElementById('error-list');
-        
+
         // Hide any existing messages
         successMessage.classList.add('hidden');
         errorMessage.classList.add('hidden');
-        
+
         // Disable button and show loading state
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending...';
-        
+
         try {
           const formData = new FormData(this);
-          
+
           const response = await fetch('{{ route('contact.store') }}', {
             method: 'POST',
             body: formData,
@@ -523,17 +523,17 @@
               'X-Requested-With': 'XMLHttpRequest'
             }
           });
-          
+
           const data = await response.json();
-          
+
           if (data.success) {
             // Show success message
             successMessage.classList.remove('hidden');
             successMessage.querySelector('p').textContent = data.message;
-            
+
             // Clear form
             this.reset();
-            
+
             // Scroll to success message
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           } else if (data.errors) {
@@ -547,7 +547,7 @@
               });
             }
             errorMessage.classList.remove('hidden');
-            
+
             // Scroll to error message
             errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
