@@ -312,7 +312,7 @@
           <!-- Contact Form -->
           <div class="bg-gray-900 p-8 rounded-xl border border-gray-800">
             <h3 class="text-2xl font-bold mb-6 text-center">Send me a message</h3>
-            
+
             @if(session('success'))
             <div class="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400">
               {{ session('success') }}
@@ -492,12 +492,12 @@
       function showToast() {
         const toast = document.getElementById('toast');
         toast.style.transform = 'translateX(0)';
-        
+
         setTimeout(() => {
           toast.style.transform = 'translateX(500px)';
         }, 4000);
       }
-      
+
       // Show toast on page load if there's a success message
       window.addEventListener('DOMContentLoaded', showToast);
       @endif
