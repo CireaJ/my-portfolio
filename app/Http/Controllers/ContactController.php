@@ -21,6 +21,9 @@ class ContactController extends Controller
         Notification::route('mail', 'Charles.Jaeric@gmail.com')
             ->notify(new InquiryReceived($inquiry));
 
-        return back()->with('success', 'Thank you for your message! I\'ll get back to you soon.');
+        return response()->json([
+            'success' => true,
+            'message' => 'Thank you for your message! I\'ll get back to you soon.'
+        ]);
     }
 }

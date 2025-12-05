@@ -28,7 +28,10 @@ class TagSeeder extends Seeder
         ];
 
         foreach ($tags as $tag) {
-            Tag::create($tag);
+            Tag::firstOrCreate(
+                ['name' => $tag['name']], // Check if exists by name
+                ['color' => $tag['color']] // Create with color if not exists
+            );
         }
     }
 }

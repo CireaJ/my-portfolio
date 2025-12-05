@@ -3,8 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio - Web Developer & Designer</title>
+    <title>Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
     @vite('resources/css/app.css')
+    <script>
+      // Scroll to top on page load/reload
+      window.addEventListener('beforeunload', function() {
+        window.scrollTo(0, 0);
+      });
+      
+      if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+      }
+    </script>
   </head>
   <body class="bg-gray-950 text-gray-100 antialiased">
 
@@ -319,6 +330,16 @@
             </div>
             @endif
 
+            <!-- Success Message (Hidden by default) -->
+            <div id="success-message" class="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg hidden">
+              <p class="text-green-400">Thank you for reaching out! I'll get back to you soon.</p>
+            </div>
+
+            <!-- Error Messages -->
+            <div id="error-message" class="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg hidden">
+              <ul id="error-list" class="list-disc list-inside text-red-400"></ul>
+            </div>
+
             @if($errors->any())
             <div class="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg">
               <ul class="list-disc list-inside text-red-400">
@@ -329,23 +350,23 @@
             </div>
             @endif
 
-            <form action="{{ route('contact.store') }}" method="POST" class="space-y-4">
+            <form id="contact-form" action="{{ route('contact.store') }}" method="POST" class="space-y-4">
               @csrf
               <div class="grid md:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                  <input type="text" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="Your name">
+                  <input type="text" id="contact-name" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="Your name">
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                  <input type="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="your.email@example.com">
+                  <input type="email" id="contact-email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="your.email@example.com">
                 </div>
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 resize-none" placeholder="Your message here...">{{ old('message') }}</textarea>
+                <textarea id="contact-message" name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 resize-none" placeholder="Your message here...">{{ old('message') }}</textarea>
               </div>
-              <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
+              <button type="submit" id="submit-btn" class="w-full px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
                 Send Message
               </button>
             </form>
@@ -362,19 +383,6 @@
         </p>
       </div>
     </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed top-4 right-4 z-50 transform translate-x-[500px] transition-transform duration-500 ease-out">
-      <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3 min-w-[320px]">
-        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-        </svg>
-        <div>
-          <p class="font-semibold">Message Sent Successfully!</p>
-          <p class="text-sm text-green-100">I'll get back to you soon.</p>
-        </div>
-      </div>
-    </div>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
@@ -487,20 +495,72 @@
         if (e.target === this) closeLightbox();
       });
 
-      // Toast notification function
-      @if(session('success'))
-      function showToast() {
-        const toast = document.getElementById('toast');
-        toast.style.transform = 'translateX(0)';
-
-        setTimeout(() => {
-          toast.style.transform = 'translateX(500px)';
-        }, 4000);
-      }
-
-      // Show toast on page load if there's a success message
-      window.addEventListener('DOMContentLoaded', showToast);
-      @endif
+      // AJAX Contact Form Submission
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('submit-btn');
+        const originalText = submitBtn.textContent;
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const errorList = document.getElementById('error-list');
+        
+        // Hide any existing messages
+        successMessage.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+        
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        
+        try {
+          const formData = new FormData(this);
+          
+          const response = await fetch('{{ route('contact.store') }}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+          });
+          
+          const data = await response.json();
+          
+          if (data.success) {
+            // Show success message
+            successMessage.classList.remove('hidden');
+            successMessage.querySelector('p').textContent = data.message;
+            
+            // Clear form
+            this.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else if (data.errors) {
+            // Show validation errors
+            errorList.innerHTML = '';
+            for (const field in data.errors) {
+              data.errors[field].forEach(error => {
+                const li = document.createElement('li');
+                li.textContent = error;
+                errorList.appendChild(li);
+              });
+            }
+            errorMessage.classList.remove('hidden');
+            
+            // Scroll to error message
+            errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        } catch (error) {
+          console.error('Error submitting form:', error);
+          errorList.innerHTML = '<li>An error occurred while sending your message. Please try again.</li>';
+          errorMessage.classList.remove('hidden');
+        } finally {
+          // Re-enable button
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
     </script>
 
   </body>
