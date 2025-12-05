@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\TechStackController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortfolioController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {

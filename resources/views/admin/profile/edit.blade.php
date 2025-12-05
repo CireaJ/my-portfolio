@@ -100,7 +100,7 @@
 
             <!-- Email -->
             <div class="mb-6">
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email (Optional)</label>
+              <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
               <input
                 type="email"
                 id="email"
@@ -112,6 +112,94 @@
               @error('email')
                 <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
               @enderror
+            </div>
+
+            <!-- Social Links Section -->
+            <div class="mb-8 pt-6 border-t border-gray-800">
+              <h3 class="text-xl font-semibold mb-4 text-cyan-400">Social Links</h3>
+              <p class="text-sm text-gray-400 mb-6">Add your social media profiles (optional)</p>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <!-- GitHub -->
+                <div>
+                  <label for="github_url" class="block text-sm font-medium text-gray-300 mb-2">GitHub URL</label>
+                  <input
+                    type="url"
+                    id="github_url"
+                    name="github_url"
+                    value="{{ old('github_url', $profile->github_url ?? '') }}"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 @error('github_url') border-red-500 @enderror"
+                    placeholder="https://github.com/yourusername"
+                  >
+                  @error('github_url')
+                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                <!-- LinkedIn -->
+                <div>
+                  <label for="linkedin_url" class="block text-sm font-medium text-gray-300 mb-2">LinkedIn URL</label>
+                  <input
+                    type="url"
+                    id="linkedin_url"
+                    name="linkedin_url"
+                    value="{{ old('linkedin_url', $profile->linkedin_url ?? '') }}"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 @error('linkedin_url') border-red-500 @enderror"
+                    placeholder="https://linkedin.com/in/yourusername"
+                  >
+                  @error('linkedin_url')
+                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                <!-- Twitter/X -->
+                <div>
+                  <label for="twitter_url" class="block text-sm font-medium text-gray-300 mb-2">Twitter/X URL</label>
+                  <input
+                    type="url"
+                    id="twitter_url"
+                    name="twitter_url"
+                    value="{{ old('twitter_url', $profile->twitter_url ?? '') }}"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 @error('twitter_url') border-red-500 @enderror"
+                    placeholder="https://twitter.com/yourusername"
+                  >
+                  @error('twitter_url')
+                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                <!-- YouTube -->
+                <div>
+                  <label for="youtube_url" class="block text-sm font-medium text-gray-300 mb-2">YouTube URL</label>
+                  <input
+                    type="url"
+                    id="youtube_url"
+                    name="youtube_url"
+                    value="{{ old('youtube_url', $profile->youtube_url ?? '') }}"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 @error('youtube_url') border-red-500 @enderror"
+                    placeholder="https://youtube.com/@yourusername"
+                  >
+                  @error('youtube_url')
+                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                <!-- Website -->
+                <div class="md:col-span-2">
+                  <label for="website_url" class="block text-sm font-medium text-gray-300 mb-2">Website URL</label>
+                  <input
+                    type="url"
+                    id="website_url"
+                    name="website_url"
+                    value="{{ old('website_url', $profile->website_url ?? '') }}"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 @error('website_url') border-red-500 @enderror"
+                    placeholder="https://yourwebsite.com"
+                  >
+                  @error('website_url')
+                    <p class="mt-2 text-sm text-red-500">{{ $message }}</p>
+                  @enderror
+                </div>
+              </div>
             </div>
 
             <!-- Profile Image -->

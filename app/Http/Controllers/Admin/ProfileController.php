@@ -31,6 +31,11 @@ class ProfileController extends Controller
             'about_description' => 'required|string',
             'email' => 'nullable|email|max:255',
             'profile_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'github_url' => 'nullable|url|max:255',
+            'linkedin_url' => 'nullable|url|max:255',
+            'twitter_url' => 'nullable|url|max:255',
+            'youtube_url' => 'nullable|url|max:255',
+            'website_url' => 'nullable|url|max:255',
         ]);
 
         $profile = Profile::first();

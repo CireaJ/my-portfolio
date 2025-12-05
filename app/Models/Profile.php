@@ -16,5 +16,10 @@ class Profile extends Model
         'about_description',
         'profile_image',
         'email',
+        'github_url',
+        'linkedin_url',
+        'twitter_url',
+        'youtube_url',
+        'website_url',
     ];
 }

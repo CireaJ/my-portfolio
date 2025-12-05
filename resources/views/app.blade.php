@@ -208,8 +208,9 @@
         <div class="max-w-4xl mx-auto">
           <!-- Social Links -->
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            @if($profile->github_url)
             <!-- GitHub -->
-            <a href="https://github.com/yourusername" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="{{ $profile->github_url }}" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -218,13 +219,15 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">GitHub</h3>
-                  <p class="text-sm text-gray-500">@yourusername</p>
+                  <p class="text-sm text-gray-500">View Projects</p>
                 </div>
               </div>
             </a>
+            @endif
 
+            @if($profile->linkedin_url)
             <!-- LinkedIn -->
-            <a href="https://linkedin.com/in/yourusername" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="{{ $profile->linkedin_url }}" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -233,13 +236,15 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">LinkedIn</h3>
-                  <p class="text-sm text-gray-500">@yourusername</p>
+                  <p class="text-sm text-gray-500">Connect</p>
                 </div>
               </div>
             </a>
+            @endif
 
+            @if($profile->website_url)
             <!-- Portfolio Website -->
-            <a href="https://yourwebsite.com" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="{{ $profile->website_url }}" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -248,13 +253,14 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">Website</h3>
-                  <p class="text-sm text-gray-500">yourwebsite.com</p>
+                  <p class="text-sm text-gray-500">Visit</p>
                 </div>
               </div>
             </a>
+            @endif
 
             <!-- Email -->
-            <a href="mailto:your.email@example.com" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="mailto:{{ $profile->email }}" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -263,13 +269,14 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">Email</h3>
-                  <p class="text-sm text-gray-500">your.email@example.com</p>
+                  <p class="text-sm text-gray-500 truncate">{{ $profile->email }}</p>
                 </div>
               </div>
             </a>
 
+            @if($profile->twitter_url)
             <!-- Twitter/X -->
-            <a href="https://twitter.com/yourusername" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="{{ $profile->twitter_url }}" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -278,13 +285,15 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">Twitter/X</h3>
-                  <p class="text-sm text-gray-500">@yourusername</p>
+                  <p class="text-sm text-gray-500">Follow</p>
                 </div>
               </div>
             </a>
+            @endif
 
+            @if($profile->youtube_url)
             <!-- YouTube -->
-            <a href="https://youtube.com/@yourusername" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
+            <a href="{{ $profile->youtube_url }}" target="_blank" class="group bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/20 hover:-translate-y-2">
               <div class="flex items-center space-x-4">
                 <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -293,29 +302,48 @@
                 </div>
                 <div>
                   <h3 class="font-semibold text-gray-200 group-hover:text-cyan-400 transition-colors">YouTube</h3>
-                  <p class="text-sm text-gray-500">@yourusername</p>
+                  <p class="text-sm text-gray-500">Subscribe</p>
                 </div>
               </div>
             </a>
+            @endif
           </div>
 
-          <!-- Contact Form (Optional) -->
+          <!-- Contact Form -->
           <div class="bg-gray-900 p-8 rounded-xl border border-gray-800">
             <h3 class="text-2xl font-bold mb-6 text-center">Send me a message</h3>
-            <form class="space-y-4">
+            
+            @if(session('success'))
+            <div class="mb-6 p-4 bg-green-500/10 border border-green-500/50 rounded-lg text-green-400">
+              {{ session('success') }}
+            </div>
+            @endif
+
+            @if($errors->any())
+            <div class="mb-6 p-4 bg-red-500/10 border border-red-500/50 rounded-lg">
+              <ul class="list-disc list-inside text-red-400">
+                @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+
+            <form action="{{ route('contact.store') }}" method="POST" class="space-y-4">
+              @csrf
               <div class="grid md:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                  <input type="text" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="Your name">
+                  <input type="text" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="Your name">
                 </div>
                 <div>
                   <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                  <input type="email" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="your.email@example.com">
+                  <input type="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200" placeholder="your.email@example.com">
                 </div>
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 resize-none" placeholder="Your message here..."></textarea>
+                <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-cyan-500 transition-colors text-gray-200 resize-none" placeholder="Your message here...">{{ old('message') }}</textarea>
               </div>
               <button type="submit" class="w-full px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 transform hover:-translate-y-1">
                 Send Message
@@ -334,6 +362,19 @@
         </p>
       </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-4 right-4 z-50 transform translate-x-[500px] transition-transform duration-500 ease-out">
+      <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-4 rounded-lg shadow-2xl flex items-center gap-3 min-w-[320px]">
+        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <div>
+          <p class="font-semibold">Message Sent Successfully!</p>
+          <p class="text-sm text-green-100">I'll get back to you soon.</p>
+        </div>
+      </div>
+    </div>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
@@ -445,6 +486,21 @@
       document.getElementById('lightbox').addEventListener('click', function(e) {
         if (e.target === this) closeLightbox();
       });
+
+      // Toast notification function
+      @if(session('success'))
+      function showToast() {
+        const toast = document.getElementById('toast');
+        toast.style.transform = 'translateX(0)';
+        
+        setTimeout(() => {
+          toast.style.transform = 'translateX(500px)';
+        }, 4000);
+      }
+      
+      // Show toast on page load if there's a success message
+      window.addEventListener('DOMContentLoaded', showToast);
+      @endif
     </script>
 
   </body>
