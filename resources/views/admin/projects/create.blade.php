@@ -114,6 +114,34 @@
                     @enderror
                 </div>
 
+                <!-- Button Visibility Options -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-300 mb-3">Button Display Options</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                name="show_demo_button"
+                                value="1"
+                                {{ old('show_demo_button', true) ? 'checked' : '' }}
+                                class="w-5 h-5 rounded border-gray-700 bg-gray-800 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-gray-900"
+                            >
+                            <span class="ml-3 text-gray-300 group-hover:text-white transition-colors">Show "Live Demo" button</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                name="show_code_button"
+                                value="1"
+                                {{ old('show_code_button', true) ? 'checked' : '' }}
+                                class="w-5 h-5 rounded border-gray-700 bg-gray-800 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-gray-900"
+                            >
+                            <span class="ml-3 text-gray-300 group-hover:text-white transition-colors">Show "View Code" button</span>
+                        </label>
+                    </div>
+                    <p class="mt-2 text-xs text-gray-500">Uncheck to hide buttons even if URLs are provided</p>
+                </div>
+
                 <!-- Tags -->
                 <div class="mb-6">
                     <label class="block text-sm font-medium text-gray-300 mb-2">Tags (Optional)</label>

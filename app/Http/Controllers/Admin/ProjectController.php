@@ -38,6 +38,8 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'demo_url' => 'nullable|url',
             'code_url' => 'nullable|url',
+            'show_demo_button' => 'boolean',
+            'show_code_button' => 'boolean',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
@@ -51,6 +53,8 @@ class ProjectController extends Controller
             'description' => $validated['description'],
             'demo_url' => $validated['demo_url'] ?? null,
             'code_url' => $validated['code_url'] ?? null,
+            'show_demo_button' => $request->has('show_demo_button'),
+            'show_code_button' => $request->has('show_code_button'),
             'order' => $maxOrder + 1,
         ]);
 
@@ -93,6 +97,8 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'demo_url' => 'nullable|url',
             'code_url' => 'nullable|url',
+            'show_demo_button' => 'boolean',
+            'show_code_button' => 'boolean',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'tags' => 'nullable|array',
             'tags.*' => 'exists:tags,id'
@@ -103,6 +109,8 @@ class ProjectController extends Controller
             'description' => $validated['description'],
             'demo_url' => $validated['demo_url'] ?? null,
             'code_url' => $validated['code_url'] ?? null,
+            'show_demo_button' => $request->has('show_demo_button'),
+            'show_code_button' => $request->has('show_code_button'),
         ]);
 
         // Handle new image uploads

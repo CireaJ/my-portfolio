@@ -174,7 +174,7 @@
 
                 <!-- Action Buttons -->
                 <div class="flex gap-3">
-                  @if($project->demo_url)
+                  @if($project->demo_url && $project->show_demo_button)
                     <a href="{{ $project->demo_url }}"
                        target="_blank"
                        class="flex-1 text-center px-4 py-2 bg-cyan-500/10 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-colors text-sm font-medium">
@@ -182,7 +182,7 @@
                     </a>
                   @endif
 
-                  @if($project->code_url)
+                  @if($project->code_url && $project->show_code_button)
                     <a href="{{ $project->code_url }}"
                        target="_blank"
                        class="flex-1 text-center px-4 py-2 bg-gray-800 text-gray-300 rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium">
@@ -190,7 +190,7 @@
                     </a>
                   @endif
 
-                  @if(!$project->demo_url && !$project->code_url)
+                  @if((!$project->demo_url || !$project->show_demo_button) && (!$project->code_url || !$project->show_code_button))
                     <button onclick="openLightbox({{ $project->id }}, 0)"
                             class="w-full text-center px-4 py-2 bg-cyan-500/10 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-colors text-sm font-medium">
                       View Images

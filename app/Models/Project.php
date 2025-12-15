@@ -14,7 +14,14 @@ class Project extends Model
         'description',
         'demo_url',
         'code_url',
+        'show_demo_button',
+        'show_code_button',
         'order',
+    ];
+
+    protected $casts = [
+        'show_demo_button' => 'boolean',
+        'show_code_button' => 'boolean',
     ];
 
     public function images()
