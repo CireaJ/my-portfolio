@@ -21,13 +21,13 @@ class TagSeeder extends Seeder
             ['name' => 'Ruby', 'color' => '#CC342D'],
             ['name' => 'Go', 'color' => '#00ADD8'],
             ['name' => 'Rust', 'color' => '#000000'],
-            
+
             // Frontend Languages
             ['name' => 'JavaScript', 'color' => '#F7DF1E'],
             ['name' => 'TypeScript', 'color' => '#3178C6'],
             ['name' => 'HTML', 'color' => '#E34F26'],
             ['name' => 'CSS', 'color' => '#1572B6'],
-            
+
             // Backend Frameworks
             ['name' => 'Laravel', 'color' => '#FF2D20'],
             ['name' => 'Django', 'color' => '#092E20'],
@@ -37,7 +37,7 @@ class TagSeeder extends Seeder
             ['name' => 'Node.js', 'color' => '#339933'],
             ['name' => 'ASP.NET', 'color' => '#512BD4'],
             ['name' => 'Ruby on Rails', 'color' => '#CC0000'],
-            
+
             // Frontend Frameworks
             ['name' => 'React', 'color' => '#61DAFB'],
             ['name' => 'Vue.js', 'color' => '#4FC08D'],
@@ -45,7 +45,7 @@ class TagSeeder extends Seeder
             ['name' => 'Next.js', 'color' => '#000000'],
             ['name' => 'Nuxt.js', 'color' => '#00DC82'],
             ['name' => 'Svelte', 'color' => '#FF3E00'],
-            
+
             // Mobile Development
             ['name' => 'Flutter', 'color' => '#02569B'],
             ['name' => 'React Native', 'color' => '#61DAFB'],
@@ -55,13 +55,13 @@ class TagSeeder extends Seeder
             ['name' => 'iOS', 'color' => '#000000'],
             ['name' => 'Ionic', 'color' => '#3880FF'],
             ['name' => 'Xamarin', 'color' => '#3498DB'],
-            
+
             // CSS Frameworks
             ['name' => 'Tailwind CSS', 'color' => '#06B6D4'],
             ['name' => 'Bootstrap', 'color' => '#7952B3'],
             ['name' => 'Material UI', 'color' => '#007FFF'],
             ['name' => 'Sass', 'color' => '#CC6699'],
-            
+
             // Databases
             ['name' => 'MySQL', 'color' => '#4479A1'],
             ['name' => 'PostgreSQL', 'color' => '#336791'],
@@ -69,14 +69,14 @@ class TagSeeder extends Seeder
             ['name' => 'SQLite', 'color' => '#003B57'],
             ['name' => 'Redis', 'color' => '#DC382D'],
             ['name' => 'Firebase', 'color' => '#FFCA28'],
-            
+
             // Cloud & DevOps
             ['name' => 'AWS', 'color' => '#FF9900'],
             ['name' => 'Azure', 'color' => '#0089D6'],
             ['name' => 'Docker', 'color' => '#2496ED'],
             ['name' => 'Kubernetes', 'color' => '#326CE5'],
             ['name' => 'Git', 'color' => '#F05032'],
-            
+
             // Tools & Others
             ['name' => 'API', 'color' => '#0EA5E9'],
             ['name' => 'REST API', 'color' => '#009688'],
